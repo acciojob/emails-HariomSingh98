@@ -8,7 +8,7 @@ For personal/limited usage, Google offers Gmail. Using Gmail, we can create an a
 For professional usage, Google offers Workspace. Workspace contains all features provided by Gmail. Some additional advantages of Workspace are: huge inbox capacity and the feature of organising calendars for daily meetings.
 Consider the following classes which implement the above mentioned system:
 
-Email: An email contains an emailId (String) and a password (String). Initially, the password is set as "Accio@123" by default.
+1.Email: An email contains an emailId (String) and a password (String). Initially, the password is set as "Accio@123" by default.
 
 a. changePassword(String oldPassword, String newPassword): This method allows you to change the email password. The password can be changed only if the oldPassword is equal to current password and the newPassword meets all of the following conditions:
 
@@ -17,7 +17,9 @@ a. changePassword(String oldPassword, String newPassword): This method allows yo
  - It contains at least one lowercase letter.
  - It contains at least one digit.
  - It contains at least one special character. Any character apart from alphabets and digits is considered a special character.
-Gmail: Gmail extends Email. A Gmail account has an inboxCapacity (the maximum number of mails that can be stored in the inbox), an Inbox (collection of mails), and a Trash (collection of mails). A mail contains a date (Date), senderId (String), message (String). It is guaranteed that the messages of all the mails are distinct. Gmail offers the following features:
+
+2.Gmail: 
+Gmail extends Email. A Gmail account has an inboxCapacity (the maximum number of mails that can be stored in the inbox), an Inbox (collection of mails), and a Trash (collection of mails). A mail contains a date (Date), senderId (String), message (String). It is guaranteed that the messages of all the mails are distinct. Gmail offers the following features:
 
 a. receiveMail(Date date, String sender, String message): If the inbox is full, move the oldest mail in the inbox to trash. Add the new mail to the inbox. It is guaranteed that the mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
 
@@ -37,12 +39,10 @@ h. emptyTrash(): Clear all the mails in the trash.
 
 i. getInboxCapacity(): Return the maximum number of mails that can be stored in the inbox.
 
-Meeting: Meeting contains a startTime (LocalTime), and an endTime (LocalTime). It is guaranteed that the start time is always less than equal to the end time.
+3.Meeting: Meeting contains a startTime (LocalTime), and an endTime (LocalTime). It is guaranteed that the start time is always less than equal to the end time.
 
-Workspace: Workspace extends Gmail. By default, the inbox capacity of a Workspace account is equal to the maximum value an integer can store. A workspace account consists of a calendar which stores the timings of daily meetings. It offers the following features:
+4.Workspace: Workspace extends Gmail. By default, the inbox capacity of a Workspace account is equal to the maximum value an integer can store. A workspace account consists of a calendar which stores the timings of daily meetings. It offers the following features:
 
 a. addMeeting(Meeting meeting): Add a meeting to the calendar.
 
 b. findMaxMeetings(): Return the maximum number of meetings you can attend, such that, at a particular time, you can be present in at most one meeting. Note that, if you want to attend a meeting, you must join it at its start time and leave at end time. Example: If a meeting ends at 10:00 am, you cannot attend another meeting starting at 10:00 am.
-
-Complete the code of the above mentioned functions. Note that you must not change the names of any existing class or method.
