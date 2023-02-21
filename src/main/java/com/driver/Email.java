@@ -30,7 +30,7 @@ public class Email {
         if (oldPassword.equals(this.password)) {
             if (isValid(newPassword)) {
                 this.password = newPassword;
-                System.out.println("Password changed successfully");
+                System.out.println("Password changed successfully!");
             } else {
                 System.out.println("The new password is not valid!");
             }
