@@ -11,8 +11,8 @@ public class Gmail extends Email {
 
     //Inbox: Stores mails. Each mail has date (Date), sender (String), message (String). It is guaranteed that message is distinct for all mails.
     //Trash: Stores mails. Each mail has date (Date), sender (String), message (String)
-    ArrayList<Mail> inbox;
-    ArrayList<Mail> trash ;
+    private ArrayList<Mail> inbox;
+    private ArrayList<Mail> trash ;
 
     private  int inboxSize;
     private int trashSize;
@@ -24,8 +24,8 @@ public class Gmail extends Email {
          this.inboxCapacity=inboxCapacity;
          this.inboxSize=0;
          this.trashSize=0;
-         inbox = new ArrayList<>();
-         trash= new ArrayList<>();
+         this.inbox = new ArrayList<>();
+         this.trash= new ArrayList<>();
 
     }
 
