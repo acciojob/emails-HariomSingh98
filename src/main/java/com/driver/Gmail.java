@@ -39,6 +39,7 @@ public class Gmail extends Email {
            trash.add(inbox.remove(0));
            setTrashSize(trash.size());
            inbox.add(n);
+           setInboxSize(inbox.size());
            return ;
        }
        inbox.add(n);
