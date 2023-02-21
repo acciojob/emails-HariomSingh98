@@ -14,16 +14,13 @@ public class Gmail extends Email {
     private ArrayList<Mail> inbox;
     private ArrayList<Mail> trash ;
 
-    private  int inboxSize;
-    private int trashSize;
+
 
 
 
     public Gmail(String emailId, int inboxCapacity) {
          super(emailId);
          this.inboxCapacity=inboxCapacity;
-         this.inboxSize=0;
-         this.trashSize=0;
          this.inbox = new ArrayList<>();
          this.trash= new ArrayList<>();
 
@@ -37,14 +34,11 @@ public class Gmail extends Email {
         Mail n = new Mail(date,sender,message);
         if(getInboxSize()==getInboxCapacity()){
            trash.add(inbox.remove(0));
-           setTrashSize(trash.size());
            inbox.add(n);
-           setInboxSize(inbox.size());
            return ;
        }
        inbox.add(n);
-        setInboxSize(inbox.size());
-
+       return ;
     }
 
     public void deleteMail(String message){
@@ -53,8 +47,6 @@ public class Gmail extends Email {
         for(int i=0;i<getInboxSize();i++){
             if(inbox.get(i).getMessage().equals(message)){
                 trash.add(inbox.remove(i));
-                setTrashSize(trash.size());
-                setInboxSize(inbox.size());
                 return ;
             }
         }
@@ -64,7 +56,7 @@ public class Gmail extends Email {
     public String findLatestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the latest mail present in the inbox
-        if(getInboxSize()== 0)return null;
+        if(inbox.isEmpty())return null;
         Mail temp= inbox.get(getInboxSize()-1);
         return temp.getMessage();
 
@@ -73,7 +65,7 @@ public class Gmail extends Email {
     public String findOldestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the oldest mail present in the inbox
-        if(getInboxSize()==0)return null;
+        if(inbox.isEmpty())return null;
         Mail temp = inbox.get(0);
         return temp.getMessage();
 
@@ -82,37 +74,31 @@ public class Gmail extends Email {
     public int findMailsBetweenDates(Date start, Date end){
         //find number of mails in the inbox which are received between given dates
         //It is guaranteed that start date <= end date
-        if(getInboxSize()==0)return 0;
+        if(inbox.isEmpty())return 0;
         int count =0;
-        for(int i=0;i<getInboxSize();i++){
-            Mail temp= inbox.get(i);
-            if ( temp.getDate().compareTo(start) >= 0 && temp.getDate().compareTo(end) <= 0)count++;
+        for(int i=0;i<inbox.size();i++){
+            if ( (inbox.get(i).getDate().compareTo(start) >= 0) && (inbox.get(i).getDate().compareTo(end) <= 0))count++;
         }
        return count ;
     }
 
     public int getInboxSize(){
         // Return number of mails in inbox
-        return this.inboxSize;
+        return inbox.size();
 
     }
-    public void setInboxSize(int size){
-        this.inboxSize= size;
-    }
+
 
     public int getTrashSize(){
         // Return number of mails in Trash
-        return this.trashSize;
+        return trash.size();
 
     }
-    public void setTrashSize(int size){
-        this.trashSize=size;
-    }
+
 
     public void emptyTrash(){
         // clear all mails in the trash
         trash.clear();
-        setTrashSize(0);
     }
 
     public int getInboxCapacity() {
